@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* 3. RESALTADO DE RUTA ACTIVA (MULTIPÁGINA)
      ========================================================================== */
   const navLinks = document.querySelectorAll('.nav-desktop .nav-link');
-  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
   
   const currentPath = window.location.pathname;
   let page = currentPath.split('/').pop() || 'index.html';
