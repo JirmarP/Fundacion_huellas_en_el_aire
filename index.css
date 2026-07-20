@@ -44,6 +44,7 @@
   /* Márgenes y Medidas */
   --header-height: 80px;
   --container-max-width: 1200px;
+  color-scheme: light;
 }
 
 /* Variables de Modo Oscuro */
@@ -71,6 +72,7 @@
   --border-color: #1E293B;
   --input-bg: #1A2436;
   --input-focus-border: var(--color-primary);
+  color-scheme: dark;
 }
 
 /* 2. RESET Y ESTILOS BASE
@@ -376,6 +378,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-text-secondary);
   border: 1px solid var(--border-color);
   transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
 }
 
 .theme-toggle-btn:hover {
