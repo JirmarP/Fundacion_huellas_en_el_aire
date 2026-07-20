@@ -705,19 +705,65 @@ h1, h2, h3, h4, h5, h6 {
   50% { transform: scale(1.05); }
 }
 
-.paper-plane-main {
-  width: 55%;
-  height: 55%;
+.heart-text-container {
   position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 2;
-  transform-style: preserve-3d;
-  animation: flying-plane 6s ease-in-out infinite;
-  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.25));
 }
 
-@keyframes flying-plane {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+.heart-pulse-wrapper {
+  width: 130px;
+  height: 130px;
+  position: absolute;
+  z-index: 3;
+  animation: heart-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes heart-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+
+.hero-heart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circular-text-wrapper {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  z-index: 2;
+  pointer-events: none;
+  animation: rotate-circle 25s linear infinite;
+}
+
+.circular-text-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.circular-text-path {
+  font-family: var(--font-heading);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  fill: var(--color-text-primary);
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .circular-text-path {
+  fill: var(--color-text-primary);
+}
+
+@keyframes rotate-circle {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .floating-heart, .floating-heart-yellow, .floating-heart-blue {
