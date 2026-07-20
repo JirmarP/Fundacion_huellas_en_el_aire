@@ -1583,3 +1583,152 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* 11. GALERÍA DE EXPERIENCIAS (NUEVO)
+   ========================================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.gallery-img-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background-color: var(--color-bg-tertiary);
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.gallery-card:hover .gallery-img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background-color: rgba(var(--color-primary-rgb), 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.gallery-content {
+  padding: 24px;
+}
+
+.gallery-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.gallery-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* 12. PÁGINA INICIO - CUADRO DE BIENVENIDA
+   ========================================================================== */
+.welcome-box {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 32px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: var(--card-shadow);
+}
+
+@media (max-width: 576px) {
+  .welcome-box {
+    padding: 40px 20px;
+  }
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.welcome-text {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+.welcome-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .welcome-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.welcome-card {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.w-card-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.welcome-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.welcome-card p {
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}

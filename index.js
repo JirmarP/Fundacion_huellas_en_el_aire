@@ -79,35 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* 3. SCROLL SPY (REVELADO DE ENLACES ACTIVO)
+  /* 3. RESALTADO DE RUTA ACTIVA (MULTIPÁGINA)
      ========================================================================== */
-  const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-desktop .nav-link');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  
+  const currentPath = window.location.pathname;
+  let page = currentPath.split('/').pop() || 'index.html';
+  
+  // Si la ruta termina en / o está vacía, es index.html
+  if (page === '' || currentPath.endsWith('/')) {
+    page = 'index.html';
+  }
 
-  const scrollSpyOptions = {
-    root: null,
-    rootMargin: '-30% 0px -60% 0px', // Detecta la sección activa cuando está en el centro de la pantalla
-    threshold: 0
-  };
-
-  const scrollSpyObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const activeId = entry.target.getAttribute('id');
-        
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${activeId}`) {
-            link.classList.add('active');
-          }
-        });
+  const highlightActiveLink = (links) => {
+    links.forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href');
+      // Coincidencia exacta con la página actual
+      if (href === page) {
+        link.classList.add('active');
       }
     });
-  }, scrollSpyOptions);
+  };
 
-  sections.forEach(section => {
-    scrollSpyObserver.observe(section);
-  });
+  highlightActiveLink(navLinks);
+  highlightActiveLink(mobileLinks);
 
 
   /* 4. SIMULADOR DE DONACIONES (WIDGET DE IMPACTO)
