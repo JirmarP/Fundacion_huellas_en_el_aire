@@ -290,4 +290,95 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ==========================================================================
+     8. CHATBOT FLOTANTE CON AUTO-APERTURA A LOS 8 SEGUNDOS
+     ========================================================================== */
+  const chatbotWidget = document.getElementById('chatbot-widget');
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotClose = document.getElementById('chatbot-close');
+  const chatbotMessages = document.getElementById('chatbot-messages');
+  const chatOptionBtns = document.querySelectorAll('.chat-option-btn');
+  const chatbotBadge = chatbotWidget ? chatbotWidget.querySelector('.chat-badge') : null;
+
+  if (chatbotWidget && chatbotToggle && chatbotClose) {
+    const openChat = () => {
+      chatbotWidget.classList.remove('collapsed');
+      if (chatbotBadge) chatbotBadge.style.display = 'none'; // Ocultar notificación al abrir
+    };
+
+    const closeChat = () => {
+      chatbotWidget.classList.add('collapsed');
+    };
+
+    chatbotToggle.addEventListener('click', openChat);
+    chatbotClose.addEventListener('click', closeChat);
+
+    // Auto-apertura a los 8 segundos (solo si el usuario no lo ha abierto/cerrado manualmente)
+    let hasInteracted = false;
+    
+    chatbotToggle.addEventListener('click', () => { hasInteracted = true; });
+    chatbotClose.addEventListener('click', () => { hasInteracted = true; });
+
+    setTimeout(() => {
+      if (!hasInteracted && chatbotWidget.classList.contains('collapsed')) {
+        openChat();
+      }
+    }, 8000);
+
+    // Manejo de Respuestas Automáticas
+    const responses = {
+      alimentos: {
+        text: "¡Maravilloso! 🍎 Recibimos alimentos no perecederos directamente en La Guaira. Si estás en Venezuela, puedes realizar tu donación mediante Pago Móvil (puedes ver los datos en la sección <a href='experiencias.html#donar'>Donaciones</a>). Si estás fuera del país o prefieres coordinar una entrega física, rellena el formulario de la sección de <a href='contacto.html'>Contacto</a>.",
+        user: "Quiero donar Alimentos o Medicinas 🍎"
+      },
+      utiles: {
+        text: "¡Excelente iniciativa! ✏️ En nuestras jornadas entregamos morrales y útiles escolares. Si quieres realizar un aporte o donar útiles directamente, puedes ver los datos bancarios en <a href='experiencias.html#donar'>Donaciones</a> o escribirnos un mensaje en la página de <a href='contacto.html'>Contacto</a> para coordinar la entrega.",
+        user: "Quiero donar Útiles Escolares ✏️"
+      },
+      voluntario: {
+        text: "¡Qué gran corazón! 🙌 Siempre necesitamos manos dispuestas para nuestras jornadas en La Guaira. Escríbenos en la sección de <a href='contacto.html'>Contacto</a> indicando tu disponibilidad y tu número de teléfono, y nos comunicaremos contigo lo antes posible para sumarte al equipo.",
+        user: "Quiero ser Voluntario 🙌"
+      },
+      contacto: {
+        text: "¡Entendido! ✉️ Puedes escribirnos con cualquier otra consulta en nuestro formulario en la sección de <a href='contacto.html'>Contacto</a> o usar el botón de WhatsApp directo al final de la página.",
+        user: "Tengo otra duda ✉️"
+      }
+    };
+
+    chatOptionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const replyKey = btn.getAttribute('data-reply');
+        const responseData = responses[replyKey];
+
+        if (responseData) {
+          hasInteracted = true;
+          // 1. Agregar mensaje del usuario
+          const userMsgDiv = document.createElement('div');
+          userMsgDiv.className = 'chat-msg user-msg';
+          userMsgDiv.textContent = responseData.user;
+          chatbotMessages.appendChild(userMsgDiv);
+
+          // Hacer scroll hacia abajo
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+          // Desactivar temporalmente los botones mientras escribe el bot
+          const footerOptions = document.getElementById('chatbot-options');
+          if (footerOptions) footerOptions.style.pointerEvents = 'none';
+
+          // 2. Simular escritura y respuesta del bot a los 750ms
+          setTimeout(() => {
+            const botMsgDiv = document.createElement('div');
+            botMsgDiv.className = 'chat-msg bot-msg';
+            botMsgDiv.innerHTML = `<p>${responseData.text}</p>`;
+            chatbotMessages.appendChild(botMsgDiv);
+            
+            // Reactivar botones y scroll
+            if (footerOptions) footerOptions.style.pointerEvents = 'auto';
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+          }, 750);
+        }
+      });
+    });
+  }
+
 });

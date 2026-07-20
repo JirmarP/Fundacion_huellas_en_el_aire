@@ -268,5 +268,41 @@
     </div>
   </footer>
 
+  <!-- Chatbot Flotante -->
+  <div id="chatbot-widget" class="chatbot-widget collapsed">
+    <!-- Botón burbuja (cuando está cerrado) -->
+    <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Abrir chat de ayuda">
+      <span class="chat-icon-emoji">💬</span>
+      <span class="chat-badge">1</span>
+    </button>
+    
+    <!-- Ventana del Chat (cuando está abierto) -->
+    <div class="chatbot-window">
+      <div class="chatbot-header">
+        <div class="chatbot-title">
+          <span class="chatbot-avatar">✨</span>
+          <div>
+            <h4>Huellitas</h4>
+            <span class="chatbot-status">En línea</span>
+          </div>
+        </div>
+        <button id="chatbot-close" class="chatbot-close-btn" aria-label="Cerrar chat">&times;</button>
+      </div>
+      
+      <div class="chatbot-body" id="chatbot-messages">
+        <div class="chat-msg bot-msg">
+          <p>¡Hola! 💛💙❤️ Bienvenido a la Fundación Huellas en el Aire. ¿Cómo te gustaría apoyar a nuestra comunidad en La Guaira hoy?</p>
+        </div>
+      </div>
+      
+      <div class="chatbot-footer" id="chatbot-options">
+        <button class="chat-option-btn" data-reply="alimentos">Donar Alimentos/Medicinas 🍎</button>
+        <button class="chat-option-btn" data-reply="utiles">Donar Útiles Escolares ✏️</button>
+        <button class="chat-option-btn" data-reply="voluntario">Ser Voluntario 🙌</button>
+        <button class="chat-option-btn" data-reply="contacto">Tengo otra duda ✉️</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
