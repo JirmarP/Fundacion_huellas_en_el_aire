@@ -28,7 +28,10 @@
   <meta name="color-scheme" content="light dark">
   <script>
     (function() {
-      const savedTheme = localStorage.getItem("theme");
+      let savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem("theme");
+      } catch (e) {}
       const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const theme = savedTheme || (systemPrefersDark ? "dark" : "light");
       document.documentElement.setAttribute("data-theme", theme);

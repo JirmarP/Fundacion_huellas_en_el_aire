@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const setTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    try {
+      localStorage.setItem('theme', theme);
+    } catch (e) {
+      // Ignorar error de seguridad en entornos locales file://
+    }
   };
 
   if (themeToggleBtn) {
@@ -27,7 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Escuchar cambios en la preferencia del sistema operativo en tiempo real
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
+    let hasSavedTheme = false;
+    try {
+      hasSavedTheme = !!localStorage.getItem('theme');
+    } catch (err) {}
+    
+    if (!hasSavedTheme) {
       setTheme(e.matches ? 'dark' : 'light');
     }
   });
