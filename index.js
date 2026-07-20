@@ -152,18 +152,18 @@ document.addEventListener('DOMContentLoaded', () => {
         impactText.textContent = "Cada aporte, sin importar el tamaño, siembra esperanza en nuestra comunidad.";
       } else {
         // Cálculo interactivo rápido para motivar al usuario
-        let kidsFed = Math.floor(parsed / 2); // $2 por merienda
-        let grandpasMed = Math.floor(parsed / 25); // $25 tratamiento
+        let foodBags = Math.floor(parsed / 25); // $25 por bolsa de comida completa
         
         if (parsed < 10) {
-          impactText.textContent = `¡Gracias por tu aporte de $${parsed}! Tu granito de arena ayuda a financiar talleres de arte y recreación infantil en La Guaira.`;
+          impactText.textContent = `¡Gracias por tu aporte de $${parsed}! Tu granito de arena ayuda a financiar la compra de material didáctico, útiles escolares y apoyo emocional.`;
         } else if (parsed >= 10 && parsed < 25) {
-          impactText.textContent = `Con tu donación de $${parsed}, aseguras la alimentación complementaria de aproximadamente ${kidsFed} niños durante sus talleres.`;
+          impactText.textContent = `Con tu donación de $${parsed}, aseguras útiles escolares y acompañamiento emocional para niños de comunidades vulnerables de La Guaira.`;
         } else if (parsed >= 25 && parsed < 50) {
-          let medText = grandpasMed > 0 ? ` y cubres el tratamiento de salud de ${grandpasMed} abuelito por un mes` : '';
-          impactText.textContent = `Con $${parsed}, alimentas a ${kidsFed} niños${medText}.`;
+          let foodText = foodBags > 0 ? `alimentar a ${foodBags} familia(s)` : 'comprar alimentos esenciales';
+          impactText.textContent = `Con $${parsed}, nos ayudas a ${foodText} y proveer medicamentos de salud prioritarios en La Guaira.`;
         } else {
-          impactText.textContent = `¡Increíble aporte de $${parsed}! Financias alimentación para ${kidsFed} niños y nos ayudas a extender las jornadas médicas en el Estado La Guaira.`;
+          let bagsText = foodBags > 0 ? ` (${foodBags} bolsas completas)` : '';
+          impactText.textContent = `¡Increíble aporte de $${parsed}! Cubres alimentación familiar${bagsText}, medicinas y útiles escolares integrales en nuestras jornadas de apoyo.`;
         }
       }
     };
