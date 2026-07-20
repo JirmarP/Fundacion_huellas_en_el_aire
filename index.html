@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundación Huellas en el Aire | Sembrando Esperanza en La Guaira, Venezuela</title>
+  
+  <!-- Meta tags para SEO -->
+  <meta name="description" content="Nacida en 2021 en La Guaira, Venezuela, la Fundación Huellas en el Aire transforma vidas a través de la solidaridad para niños, jóvenes y adultos mayores.">
+  <meta name="keywords" content="Fundación, Huellas en el Aire, La Guaira, Venezuela, Solidaridad, Donaciones, Niños, Adultos Mayores, Sin Fines de Lucro">
+  <meta name="author" content="Fundación Huellas en el Aire">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Fundación Huellas en el Aire">
+  <meta property="og:description" content="Todos dejamos huellas. La decisión es elegir dónde queremos que permanezcan. Solidaridad que vuela y aterriza en La Guaira.">
+  <meta property="og:image" content="logo.png">
+
+  <!-- Google Fonts: Outfit (Títulos) e Inter (Texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Estilos del Proyecto -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- Script de Inicialización de Tema (Evita FOUC) -->
+  <meta name="color-scheme" content="light dark">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem("theme");
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const theme = savedTheme || (systemPrefersDark ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  
+  <!-- Lógica del Proyecto -->
+  <script src="index.js" defer></script>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#inicio" class="logo-wrapper" aria-label="Volver al Inicio">
+        <!-- Logo de la fundación. Si logo.png existe, se cargará. Si no, el SVG de respaldo se mostrará -->
+        <img src="logo.png" alt="Logo Fundación Huellas en el Aire" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        
+        <div class="logo-svg-fallback">
+          <svg class="logo-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="var(--color-sky-light)" />
+            <path d="M50 25 C50 25, 62 38, 50 52 C38 38, 50 25, 50 25 Z" fill="var(--color-accent-amber)" />
+            <path d="M50 52 C50 52, 60 62, 50 72 C40 62, 50 52, 50 52 Z" fill="var(--color-accent-coral)" />
+            <path d="M25 45 L75 30 L60 60 L50 48 L25 45 Z" fill="var(--color-text-primary)" opacity="0.15" />
+            <path d="M25 45 L75 30 L50 48 L25 45 Z" fill="white" />
+            <path d="M75 30 L60 60 L50 48 L75 30 Z" fill="#E2E8F0" />
+            <path d="M50 48 L42 62 L60 60 L50 48 Z" fill="#CBD5E1" />
+          </svg>
+          <div class="logo-text">
+            <span class="logo-title">HUELLAS</span>
+            <span class="logo-subtitle">en el Aire</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Navegación de Escritorio -->
+      <nav class="nav-desktop" aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+          <li><a href="#nosotros" class="nav-link">Nosotros</a></li>
+          <li><a href="#donaciones" class="nav-link">Donaciones</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botón de Modo Oscuro y CTA -->
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Cambiar tema visual" title="Cambiar tema">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        
+        <a href="#donaciones" class="btn btn-primary btn-cta-nav">Apoyar</a>
+        
+        <!-- Botón de Menú Móvil -->
+        <button id="menu-toggle" class="menu-toggle-btn" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menú de navegación">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menú de Navegación Móvil (Drawer) -->
+  <div id="mobile-menu" class="mobile-menu-drawer" aria-hidden="true">
+    <div class="mobile-menu-content">
+      <nav aria-label="Navegación móvil">
+        <ul class="mobile-nav-list">
+          <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+          <li><a href="#nosotros" class="mobile-nav-link">Nosotros</a></li>
+          <li><a href="#donaciones" class="mobile-nav-link">Donaciones</a></li>
+          <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#donaciones" class="btn btn-primary btn-full">Donar Ahora</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Sección Inicio (Hero) -->
+    <section id="inicio" class="hero-section">
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+      </div>
+      
+      <!-- Aviones de papel flotantes decorativos -->
+      <div class="floating-planes" aria-hidden="true">
+        <div class="floating-plane plane-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 22L22 2L15 22L11 13L2 22Z" />
+            <path d="M22 2L11 13" />
+          </svg>
+        </div>
+        <div class="floating-plane plane-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 22L22 2L15 22L11 13L2 22Z" />
+            <path d="M22 2L11 13" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content scroll-reveal">
+          <div class="badge-venezuela">
+            <span class="flag-stripe yellow"></span>
+            <span class="flag-stripe blue"></span>
+            <span class="flag-stripe red"></span>
+            <span>Desde La Guaira, Venezuela 🇻🇪</span>
+          </div>
+          
+          <h1 class="hero-title text-balance">
+            La solidaridad también puede <span class="text-gradient">volar y aterrizar</span> donde hay esperanza.
+          </h1>
+          
+          <p class="hero-subtitle">
+            Todos dejamos huellas. La decisión es elegir dónde queremos que permanezcan. 💛💙❤️
+          </p>
+          
+          <p class="hero-text text-balance">
+            Nacimos en el 2021 durante la pandemia. Creemos que cada pequeña acción puede transformar vidas, sembrando apoyo en el corazón de nuestra comunidad guaireña.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#donaciones" class="btn btn-primary btn-large">¿Cómo ayudar?</a>
+            <a href="#nosotros" class="btn btn-secondary btn-large">Conoce nuestra historia</a>
+          </div>
+        </div>
+
+        <div class="hero-illustration-wrapper scroll-reveal">
+          <!-- Ilustración que evoca el logotipo: niños, abuelos y el avión de papel -->
+          <div class="hero-card-illustration">
+            <div class="circle-bg"></div>
+            
+            <!-- Avión de papel grande animado en el centro -->
+            <div class="paper-plane-main">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 90 L90 10 L60 90 L45 55 L10 90 Z" fill="var(--color-primary)" />
+                <path d="M90 10 L45 55 L10 90 L90 10 Z" fill="rgba(255,255,255,0.85)" />
+                <path d="M90 10 L60 90 L45 55 L90 10 Z" fill="rgba(255,255,255,0.6)" />
+              </svg>
+            </div>
+            
+            <div class="floating-heart">❤️</div>
+            <div class="floating-heart-yellow">💛</div>
+            <div class="floating-heart-blue">💙</div>
+
+            <!-- Personajes simbólicos en tarjetas flotantes (Niños, Abuela) -->
+            <div class="character-card char-kids">
+              <div class="char-icon">👦👧</div>
+              <div class="char-info">
+                <h4>Niñez & Juventud</h4>
+                <p>Sembrando sonrisas y educación</p>
+              </div>
+            </div>
+            
+            <div class="character-card char-grandma">
+              <div class="char-icon">👵</div>
+              <div class="char-info">
+                <h4>Adulto Mayor</h4>
+                <p>Una mano amiga y sabia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="section section-nosotros">
+      <div class="container">
+        <div class="section-header scroll-reveal">
+          <span class="section-tag">¿Quiénes Somos?</span>
+          <h2 class="section-title">Sembrando una mano amiga y sabia</h2>
+          <div class="rif-badge">RIF - V140075449</div>
+          <p class="section-description text-balance">
+            Fundación Huellas en el Aire es una organización social sin fines de lucro que nace en el año 2021 en La Guaira, Venezuela. Creemos firmemente que la solidaridad es el puente para devolver la esperanza a quienes más lo necesitan.
+          </p>
+        </div>
+
+        <!-- Pilares de Acción -->
+        <div class="pillars-grid">
+          <!-- Pilar 1 -->
+          <div class="pillar-card scroll-reveal">
+            <div class="pillar-icon-wrapper blue-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pillar-icon">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3>Niñez y Juventud</h3>
+            <p>
+              Proporcionamos alimentación complementaria, talleres de arte, actividades educativas y apoyo pedagógico para que los niños de La Guaira vuelen alto y alcancen sus sueños.
+            </p>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="pillar-card scroll-reveal">
+            <div class="pillar-icon-wrapper amber-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pillar-icon">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3>Adultos Mayores</h3>
+            <p>
+              Honramos su experiencia e historia. A través del programa <strong>"Mano amiga y sabia"</strong>, brindamos jornadas de salud, entrega de medicamentos y talleres de esparcimiento.
+            </p>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="pillar-card scroll-reveal">
+            <div class="pillar-icon-wrapper coral-bg">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="pillar-icon">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+            </div>
+            <h3>Comunidad y Solidaridad</h3>
+            <p>
+              Transformamos cada donación en gestos concretos de amor: bolsas de alimentos para familias vulnerables, jornadas de infraestructura comunitaria y auxilio en emergencias locales.
+            </p>
+          </div>
+        </div>
+
+        <!-- Línea de Tiempo e Historia -->
+        <div class="history-block scroll-reveal">
+          <div class="history-content">
+            <h3>Nuestra Historia</h3>
+            <p>
+              En el 2021, mientras el mundo entero vivía momentos de total parálisis e incertidumbre debido a la pandemia, un grupo de voluntarios en La Guaira decidió no quedarse de brazos cruzados. Nos dimos cuenta de que las necesidades más profundas no esperan y que el aislamiento podía combatirse con gestos de solidaridad organizada.
+            </p>
+            <p>
+              Así nació la **Fundación Huellas en el Aire**. Nuestro nombre simboliza esa capacidad de que la ayuda traspase barreras geográficas y físicas, volando como un avión de papel hasta aterrizar en los hogares de quienes conservan la esperanza.
+            </p>
+          </div>
+          
+          <div class="timeline-visual">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2021</div>
+              <div class="timeline-desc">
+                <strong>Nacimiento en Pandemia</strong>
+                <p>Primeras entregas de alimentos y mascarillas en sectores vulnerables de La Guaira.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">2023</div>
+              <div class="timeline-desc">
+                <strong>Programa "Mano Sabia"</strong>
+                <p>Inicio formal de atención médica y entrega mensual de medicinas a abuelitos.</p>
+              </div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">Hoy</div>
+              <div class="timeline-desc">
+                <strong>Un Legado que Vuela</strong>
+                <p>Más de 1,200 huellas marcadas gracias al apoyo incondicional de donantes locales e internacionales.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Donaciones -->
+    <section id="donaciones" class="section section-donaciones">
+      <div class="container">
+        <div class="donations-grid">
+          
+          <!-- Widget Interactivo de Donación -->
+          <div class="donation-card scroll-reveal">
+            <span class="section-tag">Donaciones</span>
+            <h2>Tu solidaridad vuela alto</h2>
+            <p class="donation-card-intro">
+              Selecciona una de nuestras causas y descubre cómo tu aporte se convierte en acciones reales en La Guaira.
+            </p>
+
+            <div class="donation-selector">
+              <button class="donation-btn active" data-amount="10" data-impact="Con $10 aseguras la merienda escolar y el material recreativo de 5 niños en nuestros talleres por una semana.">
+                $10
+              </button>
+              <button class="donation-btn" data-amount="25" data-impact="Con $25 garantizas la compra de tratamientos antihipertensivos y analgésicos para un abuelito durante todo el mes.">
+                $25
+              </button>
+              <button class="donation-btn" data-amount="50" data-impact="Con $50 financias una bolsa de alimentación completa para 2 familias vulnerables de la comunidad de La Guaira.">
+                $50
+              </button>
+              <button class="donation-btn" data-amount="custom" data-impact="Cualquier monto personalizado se destinará al fondo de emergencias de salud y alimentación de la fundación.">
+                Otro
+              </button>
+            </div>
+
+            <!-- Caja de Impacto Dinámica -->
+            <div class="impact-box">
+              <div class="impact-icon">✨</div>
+              <p id="impact-text" class="impact-text">
+                Con $10 aseguras la merienda escolar y el material recreativo de 5 niños en nuestros talleres por una semana.
+              </p>
+            </div>
+
+            <div class="custom-amount-input-wrapper" id="custom-amount-container" style="display: none;">
+              <label for="custom-amount">Monto personalizado ($ USD)</label>
+              <div class="input-currency-wrapper">
+                <span class="currency-symbol">$</span>
+                <input type="number" id="custom-amount" class="form-input" min="1" placeholder="Ej. 15">
+              </div>
+            </div>
+
+            <a href="#contacto" class="btn btn-primary btn-full">Coordinar Donación en USD</a>
+          </div>
+
+          <!-- Datos de Transferencia Local (Pago Móvil / Transferencia) -->
+          <div class="bank-card scroll-reveal">
+            <div class="badge-local-currency">Aportes en Venezuela 🇻🇪</div>
+            <h3>Pago Móvil y Transferencia</h3>
+            <p class="bank-card-desc">
+              Si te encuentras en Venezuela, puedes realizar tu donación directamente en Bolívares de forma fácil y segura.
+            </p>
+
+            <div class="bank-details-list">
+              <!-- RIF -->
+              <div class="bank-detail-item">
+                <div class="detail-label">RIF de la Fundación</div>
+                <div class="detail-value-wrapper">
+                  <span class="detail-value" id="copy-rif">V-140075449</span>
+                  <button class="btn-copy" data-copy-target="copy-rif" aria-label="Copiar RIF">
+                    <span class="copy-text">Copiar</span>
+                    <span class="copied-indicator">¡Copiado!</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Banco -->
+              <div class="bank-detail-item">
+                <div class="detail-label">Banco</div>
+                <div class="detail-value-wrapper">
+                  <span class="detail-value" id="copy-banco">Banco de Venezuela</span>
+                  <button class="btn-copy" data-copy-target="copy-banco" aria-label="Copiar Banco">
+                    <span class="copy-text">Copiar</span>
+                    <span class="copied-indicator">¡Copiado!</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Pago Móvil Teléfono -->
+              <div class="bank-detail-item">
+                <div class="detail-label">Teléfono Pago Móvil</div>
+                <div class="detail-value-wrapper">
+                  <span class="detail-value" id="copy-phone">0412-2513470</span>
+                  <button class="btn-copy" data-copy-target="copy-phone" aria-label="Copiar teléfono de Pago Móvil">
+                    <span class="copy-text">Copiar</span>
+                    <span class="copied-indicator">¡Copiado!</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Cuenta Corriente (Simulada para visualización completa) -->
+              <div class="bank-detail-item">
+                <div class="detail-label">Cuenta Corriente</div>
+                <div class="detail-value-wrapper">
+                  <span class="detail-value font-mono" id="copy-account">01020452390100234567</span>
+                  <button class="btn-copy" data-copy-target="copy-account" aria-label="Copiar número de cuenta bancaria">
+                    <span class="copy-text">Copiar</span>
+                    <span class="copied-indicator">¡Copiado!</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="bank-footer">
+              <p>⚠️ Al realizar tu transferencia, por favor envíanos el comprobante a través de nuestro formulario de contacto o vía WhatsApp para hacer el registro.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="section section-contacto">
+      <div class="container">
+        <div class="contacto-grid">
+          
+          <!-- Información y Redes -->
+          <div class="contacto-info scroll-reveal">
+            <span class="section-tag">Contacto</span>
+            <h2>Escríbenos, queremos escucharte</h2>
+            <p>
+              ¿Tienes dudas, deseas unirte como voluntario o quieres coordinar una entrega especial de donativos? Ponte en contacto con nosotros. Una mano amiga siempre está atenta.
+            </p>
+
+            <div class="contact-details">
+              <div class="contact-detail-row">
+                <div class="contact-icon-bubble">📍</div>
+                <div>
+                  <h4>Ubicación</h4>
+                  <p>La Guaira, Estado La Guaira, Venezuela</p>
+                </div>
+              </div>
+              
+              <div class="contact-detail-row">
+                <div class="contact-icon-bubble">✉️</div>
+                <div>
+                  <h4>Correo Electrónico</h4>
+                  <p>contacto@huellasenelaire.org</p>
+                </div>
+              </div>
+
+              <div class="contact-detail-row">
+                <div class="contact-icon-bubble">💬</div>
+                <div>
+                  <h4>Redes Sociales y Mensajería</h4>
+                  <p>Instagram: @fundacionhuellasenelaire</p>
+                  <p>WhatsApp: +58 412-2513470</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Ilustración decorativa del mapa de La Guaira o similar en CSS -->
+            <div class="contact-map-sim">
+              <div class="map-circle"></div>
+              <span>La Guaira, Venezuela</span>
+            </div>
+          </div>
+
+          <!-- Formulario de Contacto -->
+          <div class="contacto-form-wrapper scroll-reveal">
+            <form id="contact-form" class="contact-form" novalidate>
+              <div class="form-group">
+                <label for="form-name">Nombre Completo</label>
+                <input type="text" id="form-name" class="form-input" required placeholder="Tu nombre y apellido">
+                <span class="form-error">Por favor, ingresa tu nombre.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-email">Correo Electrónico</label>
+                <input type="email" id="form-email" class="form-input" required placeholder="correo@ejemplo.com">
+                <span class="form-error">Por favor, ingresa un correo electrónico válido.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject">Asunto</label>
+                <select id="form-subject" class="form-input" required>
+                  <option value="" disabled selected>Selecciona una opción</option>
+                  <option value="donacion">Quiero coordinar una donación</option>
+                  <option value="voluntario">Deseo ser voluntario</option>
+                  <option value="informacion">Solicitud de información general</option>
+                  <option value="otro">Otro asunto</option>
+                </select>
+                <span class="form-error">Por favor, selecciona un asunto.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message">Mensaje</label>
+                <textarea id="form-message" class="form-input form-textarea" required placeholder="Escribe tu mensaje aquí..." rows="5"></textarea>
+                <span class="form-error">Por favor, escribe un mensaje.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full btn-submit">
+                <span class="btn-text">Enviar Mensaje</span>
+                <span class="spinner" style="display: none;"></span>
+              </button>
+            </form>
+            
+            <!-- Mensaje de éxito post envío -->
+            <div id="contact-success" class="contact-success-state" style="display: none;">
+              <div class="success-icon">✉️✨</div>
+              <h3>¡Mensaje enviado con éxito!</h3>
+              <p>Gracias por dejar tu huella. Responderemos a tu solicitud lo más pronto posible a tu correo electrónico.</p>
+              <button id="btn-reset-form" class="btn btn-secondary">Enviar otro mensaje</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="logo-svg-fallback">
+          <svg class="logo-svg-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="45" fill="var(--color-sky-light)" />
+            <path d="M50 25 C50 25, 62 38, 50 52 C38 38, 50 25, 50 25 Z" fill="var(--color-accent-amber)" />
+            <path d="M50 52 C50 52, 60 62, 50 72 C40 62, 50 52, 50 52 Z" fill="var(--color-accent-coral)" />
+            <path d="M25 45 L75 30 L60 60 L50 48 L25 45 Z" fill="var(--color-text-primary)" opacity="0.15" />
+            <path d="M25 45 L75 30 L50 48 L25 45 Z" fill="white" />
+            <path d="M75 30 L60 60 L50 48 L75 30 Z" fill="#E2E8F0" />
+            <path d="M50 48 L42 62 L60 60 L50 48 Z" fill="#CBD5E1" />
+          </svg>
+          <div class="logo-text">
+            <span class="logo-title">HUELLAS</span>
+            <span class="logo-subtitle">en el Aire</span>
+          </div>
+        </div>
+        <p class="footer-motto">
+          "Todos dejamos huellas. La decisión es elegir dónde queremos que permanezcan."
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Enlaces Rápidos</h4>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#donaciones">Donaciones</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-social">
+        <h4>Siguenos y Acompáñanos</h4>
+        <div class="social-icons">
+          <!-- Instagram -->
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Sintoniza nuestro Instagram" class="social-icon-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Sintoniza nuestro Facebook" class="social-icon-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Sintoniza nuestro Twitter/X" class="social-icon-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+            </svg>
+          </a>
+        </div>
+        <p class="rif-footer">RIF - V140075449</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>&copy; 2026 Fundación Huellas en el Aire. Todos los derechos reservados.</p>
+        <p>Hecho con amor en La Guaira, Venezuela 🇻🇪</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
