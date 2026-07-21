@@ -1821,6 +1821,23 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--color-primary-hover);
 }
 
+.chat-toggle-svg {
+  width: 28px;
+  height: 28px;
+  stroke: white;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: transform var(--transition-fast);
+  margin-top: 2px;
+  margin-right: 2px;
+}
+
+.chatbot-toggle-btn:hover .chat-toggle-svg {
+  transform: rotate(-15deg) scale(1.08);
+}
+
 .chat-badge {
   position: absolute;
   top: -2px;
