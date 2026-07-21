@@ -335,6 +335,10 @@ document.addEventListener('DOMContentLoaded', () => {
         text: "¡Excelente iniciativa! ✏️ En nuestras jornadas entregamos morrales y útiles escolares. Si quieres realizar un aporte o donar útiles directamente, puedes ver los datos bancarios en <a href='experiencias.html#donar'>Donaciones</a> o escribirnos un mensaje en la página de <a href='contacto.html'>Contacto</a> para coordinar la entrega.",
         user: "Quiero donar Útiles Escolares ✏️"
       },
+      ropa: {
+        text: "¡Excelente! 👕 Recibimos ropa, calzado y textiles en buen estado para niños, jóvenes y adultos. Si estás en Venezuela, escríbenos a través del formulario en la sección de <a href='contacto.html'>Contacto</a> indicando tu ubicación y tipo de prendas para coordinar la entrega.",
+        user: "Quiero donar Ropa 👕"
+      },
       voluntario: {
         text: "¡Qué gran corazón! 🙌 Siempre necesitamos manos dispuestas para nuestras jornadas en La Guaira. Escríbenos en la sección de <a href='contacto.html'>Contacto</a> indicando tu disponibilidad y tu número de teléfono, y nos comunicaremos contigo lo antes posible para sumarte al equipo.",
         user: "Quiero ser Voluntario 🙌"
