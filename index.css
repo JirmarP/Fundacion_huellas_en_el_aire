@@ -1800,42 +1800,34 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .chatbot-toggle-btn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  color: white;
+  width: 65px;
+  height: 65px;
+  background: transparent;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 25px rgba(29, 89, 155, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
-  transition: transform var(--transition-fast), background-color var(--transition-fast);
+  transition: transform var(--transition-fast);
   position: relative;
+  animation: chatbot-heart-beat 2.2s ease-in-out infinite;
+  filter: drop-shadow(0 10px 18px rgba(225, 75, 75, 0.45));
+}
+
+@keyframes chatbot-heart-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
 }
 
 .chatbot-toggle-btn:hover {
-  transform: scale(1.08);
-  background-color: var(--color-primary-hover);
+  transform: scale(1.15);
+  animation-play-state: paused;
 }
 
 .chat-toggle-svg {
-  width: 28px;
-  height: 28px;
-  stroke: white;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  fill: none;
+  width: 100%;
+  height: 100%;
   transition: transform var(--transition-fast);
-  margin-top: 2px;
-  margin-right: 2px;
-}
-
-.chatbot-toggle-btn:hover .chat-toggle-svg {
-  transform: rotate(-15deg) scale(1.08);
 }
 
 .chat-badge {

@@ -272,8 +272,25 @@
   <div id="chatbot-widget" class="chatbot-widget collapsed">
     <!-- Botón burbuja (cuando está cerrado) -->
     <button id="chatbot-toggle" class="chatbot-toggle-btn" aria-label="Abrir chat de ayuda">
-      <svg class="chat-toggle-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+      <svg class="chat-toggle-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="chatHeartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#FF4B4B" />
+            <stop offset="100%" stop-color="#C21A1A" />
+          </linearGradient>
+        </defs>
+        <!-- Corazón Rojo -->
+        <path d="M 50,28 C 40,13 15,13 15,41 C 15,65 50,88 50,88 C 50,88 85,65 85,41 C 85,13 60,13 50,28 Z" fill="url(#chatHeartGrad)" />
+        <!-- Diademas/Auriculares -->
+        <path d="M 16,42 A 38,38 0 0,1 84,42" stroke="#FFFFFF" stroke-width="5.5" fill="none" stroke-linecap="round" />
+        <!-- Almohadilla izquierda -->
+        <rect x="10" y="30" width="10" height="24" rx="5" fill="#FFFFFF" />
+        <!-- Almohadilla derecha -->
+        <rect x="80" y="30" width="10" height="24" rx="5" fill="#FFFFFF" />
+        <!-- Brazo del Micrófono -->
+        <path d="M 16,45 Q 22,65 38,62" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round" />
+        <!-- Punta del Micrófono -->
+        <circle cx="38" cy="62" r="4.5" fill="#FBBF24" />
       </svg>
       <span class="chat-badge">1</span>
     </button>
